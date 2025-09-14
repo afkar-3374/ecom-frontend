@@ -1,5 +1,5 @@
 // Define the base URL for your backend server
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://ecom-api-wehj.onrender.com';
 
 // A simple way to check which page we are on
 const isStorefront = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
