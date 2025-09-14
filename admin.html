@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="logo-update">
+            <h3>Update Shop Logo</h3>
+            <div class="logo-preview-container">
+                <img id="logo-preview" src="https://via.placeholder.com/50" alt="Current Logo">
+            </div>
+            <input type="file" id="logo-upload" accept="image/*">
+            <button id="update-logo-btn">Update Logo</button>
+        </div>
+        
+        <div class="name-update">
+            <h3>Update Shop Name</h3>
+            <input type="text" id="shop-name-input" placeholder="New Shop Name">
+            <button id="update-name-btn">Update Name</button>
+        </div>
+    </header>
+
+    <main class="admin-panel">
+        <h2>Product Management</h2>
+        <div class="product-grid">
+
+            <div class="product-card add-product-card">
+                <i class="fas fa-plus add-product-icon"></i>
+                <div class="add-product-form" style="display: none;">
+                    <h3>Add New Product</h3>
+                    <input type="file" id="new-product-image" accept="image/*">
+                    <input type="text" id="new-product-name" placeholder="Product Name">
+                    <input type="number" id="new-product-price" placeholder="Our Price" step="0.01">
+                    <textarea id="new-product-description" placeholder="Product Description"></textarea>
+                    <button id="submit-product-btn">Submit</button>
+                </div>
+            </div>
+
+            </div>
+
+        <h2 style="margin-top: 50px;">Order Management</h2>
+        <div class="orders-section" id="orders-section">
+            </div>
+    </main>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

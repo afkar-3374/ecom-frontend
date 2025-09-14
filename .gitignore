@@ -1,0 +1,10 @@
+# Node.js
+node_modules/
+.env
+
+# MacOS
+.DS_Store
+
+# Vercel and Render
+.vercel/
+.render/

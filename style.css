@@ -1,0 +1,578 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling (Storefront) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.shop-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.search-and-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    margin-right: 20px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.25);
+}
+
+.cart-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    position: relative;
+    color: #555;
+}
+
+.cart-count {
+    background-color: #ff4d4f;
+    color: white;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-weight: bold;
+    animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Product Grid and Cards (Both Pages) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 50px;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space between elements */
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Prevents cropping, maintains aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 1.3rem;
+    color: #222;
+}
+
+.product-card .price {
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Modal (Cart Pop-up) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 650px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-items-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls button {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.quantity-controls button:hover {
+    background-color: #ccc;
+}
+
+.quantity-controls span {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.cart-summary {
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #eee;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+
+/* --- Admin Panel Styles --- */
+.admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 25px;
+}
+
+.logo-update {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-update h3 {
+    margin: 0;
+}
+
+.logo-preview-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ddd;
+}
+
+#logo-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-panel {
+    padding: 50px;
+}
+
+.admin-panel h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #444;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Styles for the "Add Product" card */
+.add-product-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    border: 2px dashed #ddd;
+    color: #aaa;
+    transition: all 0.3s;
+}
+
+.add-product-card:hover {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.add-product-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.add-product-card .add-product-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.add-product-form h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.add-product-form input,
+.add-product-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+}
+
+.add-product-form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.add-product-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.add-product-form button:hover {
+    background-color: #218838;
+}
+
+/* Delete button for products */
+.product-card .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.product-card .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* --- Admin Name Update Styles --- */
+.name-update {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.name-update h3 {
+    margin: 0;
+}
+
+.name-update input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.name-update button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.name-update button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Checkout Modal Styles --- */
+#checkout-modal .modal-content {
+    max-width: 500px;
+}
+
+#checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#checkout-form label {
+    font-weight: bold;
+    color: #555;
+}
+
+#checkout-form input,
+#checkout-form select,
+#checkout-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#checkout-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#upi-details {
+    padding: 15px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3e0ff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#upi-details img {
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#place-order-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#place-order-btn:hover {
+    background-color: #218838;
+}
+
+/* --- Order Management Styles --- */
+.orders-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.order-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.order-card h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.order-card p {
+    margin: 8px 0;
+}
+
+.order-card h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.order-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.order-card ul li {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.order-status {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: white;
+}
+
+.order-status.pending {
+    background-color: #ffc107; /* Orange */
+}
+
+.order-status.approved {
+    background-color: #28a745; /* Green */
+}
+
+.order-status.cancelled {
+    background-color: #dc3545; /* Red */
+}
+
+.order-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.order-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.approve-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}
